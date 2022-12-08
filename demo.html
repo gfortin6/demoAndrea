@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TP1 Castaneda</title>
+    <!-- TP1 Andrea Castaneda -->
+    <style>
+      .titulo {
+        text-align: center;
+      }
+      .operandes {
+        display: flex;
+      }
+
+      .botones {
+        display: flex;
+      }
+      .botones button {
+        font-size: 150%;
+        margin: 5px;
+      }
+      .calculatrice {
+        background-color: rgb(190, 185, 185);
+      }
+      .injectionBalises {
+        background-color: rgb(190, 185, 185);
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="titulo">
+      <h1>Cours programation Web 1</h1>
+      <h2>Devoir 1</h2>
+    </div>
+    <h2>Partie 1 - Calculatrice</h2>
+    <div class="calculatrice">
+      <div class="operandes">
+        <p>Opérande 1: <input type="text" name="operande1" id="operande1" /></p>
+        <p>Opérande 2: <input type="text" name="operande2" id="operande2" /></p>
+      </div>
+      <p>Résultat: <input type="text" readonly name="resultat" id="resultat" /></p>
+
+      <div class="botones">
+        <p>
+          <button onclick="suma();">+</button>
+        </p>
+        <p>
+          <button onclick="resta();">-</button>
+        </p>
+        <p>
+          <button onclick="multiplicacion();">x</button>
+        </p>
+        <p>
+          <button onclick="division();">÷</button>
+        </p>
+        <p>
+          <button onclick="modulo();">%</button>
+        </p>
+      </div>
+    </div>
+    <script>
+      function suma() {
+        const Operande1 = document.getElementById('operande1').value;
+        const Operande2 = document.getElementById('operande2').value;
+        // const nouveauContenu = "<" + valeurDeBalise + '>' + valeurDuTexte + '</'+ valeurDeBalise + '>';
+        let resultat = parseInt(Operande1) + parseInt(Operande2);
+        console.log(resultat);
+        document.getElementById('resultat').value = resultat;
+      }
+      function resta() {
+        const Operande1 = document.getElementById('operande1').value;
+        const Operande2 = document.getElementById('operande2').value;
+        // const nouveauContenu = "<" + valeurDeBalise + '>' + valeurDuTexte + '</'+ valeurDeBalise + '>';
+        let resultat = Operande1 - Operande2;
+        console.log(resultat);
+        document.getElementById('resultat').value = resultat;
+      }
+      function multiplicacion() {
+        const Operande1 = document.getElementById('operande1').value;
+        const Operande2 = document.getElementById('operande2').value;
+        // const nouveauContenu = "<" + valeurDeBalise + '>' + valeurDuTexte + '</'+ valeurDeBalise + '>';
+        let resultat = Operande1 * Operande2;
+        console.log(resultat);
+        document.getElementById('resultat').value = resultat;
+      }
+      function division() {
+        const Operande1 = document.getElementById('operande1').value;
+        const Operande2 = document.getElementById('operande2').value;
+        // const nouveauContenu = "<" + valeurDeBalise + '>' + valeurDuTexte + '</'+ valeurDeBalise + '>';
+        let resultat = Operande1 / Operande2;
+        console.log(resultat);
+        document.getElementById('resultat').value = resultat;
+      }
+      function modulo() {
+        const Operande1 = document.getElementById('operande1').value;
+        const Operande2 = document.getElementById('operande2').value;
+        // const nouveauContenu = "<" + valeurDeBalise + '>' + valeurDuTexte + '</'+ valeurDeBalise + '>';
+        let resultat = Operande1 % Operande2;
+        console.log(resultat);
+        document.getElementById('resultat').value = resultat;
+      }
+    </script>
+    <br />
+    <hr />
+
+    <h2>Partie 2 - Injection Balise h1 à h6</h2>
+    <div class="injectionBalises">
+      <p>Texte à afficher dans la balise: <input type="text" name="duTexte" id="duTexte" /></p>
+      <p>Numéro de balise h à utiliser (1 à 6): <input type="text" name="balise" id="balise" /></p>
+
+      <p>
+        <button onclick="affiche()">Afficher le texte dans un titre h</button>
+      </p>
+      <div id="resultado">Affichage du résultat ici...</div>
+
+      <script>
+        function affiche() {
+          let valeurDuTexte = document.getElementById('duTexte').value;
+          const valeurDeBalise = document.getElementById('balise').value;
+          if (valeurDeBalise >= 1 && valeurDeBalise <= 6) {
+            const nouveauContenu =
+              "<${'h'+valeurDeBalise } style='color: green;''>${valeurDuTexte}</${'h'+valeurDeBalise}>";
+            console.log(nouveauContenu);
+            document.getElementById('resultado').innerHTML = nouveauContenu;
+          } else {
+            const nouveauContenu = (
+              <h2 style="color:red;">ERREUR: Veuillez saisir une valeur de balise comprise entre 1 et 6 </h2>
+            );
+            document.getElementById('resultado').innerHTML = nouveauContenu;
+          }
+        }
+      </script>
+    </div>
+  </body>
+</html>
